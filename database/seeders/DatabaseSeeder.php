@@ -2,24 +2,39 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Mang\ReadOnlyMangModel;
+use App\Services\MangDirectory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
     /**
-     * Seed the application's database.
+     * إن كانت قاعدة الموظفين mang متاحة: الهيكل الإداري + الكليات والأقسام من mang.
+     * وإلا: الهيكل الإداري + كليات تجريبية (للاختبار).
+     *
+     * لا نستخدم WithoutModelEvents لأن مسار الجهة (path) يُحسب في أحداث الموديل.
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $fromMang = ! app()->runningUnitTests() && ReadOnlyMangModel::available();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        $units = new UnitSeeder;
+        $units->withSampleColleges = ! $fromMang;
+        $units->setContainer($this->container)->setCommand($this->command)->__invoke();
+
+        if ($fromMang) {
+            $stats = app(MangDirectory::class)->importUnits();
+            $this->command?->info("الكليات والأقسام من mang: {$stats['created']} جهة");
+        }
+
+        $this->call([
+            RoleSeeder::class,
+            UserSeeder::class,
+            TemplateSeeder::class,
         ]);
+
+        if ($fromMang) {
+            $this->command?->warn('لإنشاء حسابات الموظفين من mang: php artisan mang:import-users');
+        }
     }
 }

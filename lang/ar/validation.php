@@ -1,0 +1,46 @@
+<?php
+
+return [
+    'accepted' => 'يجب قبول :attribute.',
+    'after' => 'يجب أن يكون :attribute تاريخًا بعد :date.',
+    'after_or_equal' => 'يجب أن يكون :attribute تاريخًا بعد أو يساوي :date.',
+    'array' => 'يجب أن يكون :attribute قائمة.',
+    'before' => 'يجب أن يكون :attribute تاريخًا قبل :date.',
+    'before_or_equal' => 'يجب أن يكون :attribute تاريخًا قبل أو يساوي :date.',
+    'boolean' => 'يجب أن تكون قيمة :attribute صحيحة أو خاطئة.',
+    'confirmed' => 'تأكيد :attribute غير متطابق.',
+    'date' => ':attribute ليس تاريخًا صحيحًا.',
+    'email' => 'يجب أن يكون :attribute بريدًا إلكترونيًا صحيحًا.',
+    'enum' => 'القيمة المختارة لـ :attribute غير صحيحة.',
+    'exists' => 'القيمة المختارة لـ :attribute غير موجودة.',
+    'file' => 'يجب أن يكون :attribute ملفًا.',
+    'image' => 'يجب أن يكون :attribute صورة.',
+    'in' => 'القيمة المختارة لـ :attribute غير صحيحة.',
+    'integer' => 'يجب أن يكون :attribute عددًا صحيحًا.',
+    'max' => [
+        'array' => 'يجب ألا يحتوي :attribute على أكثر من :max عنصر.',
+        'file' => 'يجب ألا يتجاوز حجم :attribute :max كيلوبايت.',
+        'numeric' => 'يجب ألا تتجاوز قيمة :attribute :max.',
+        'string' => 'يجب ألا يتجاوز طول :attribute :max حرفًا.',
+    ],
+    'mimes' => 'يجب أن يكون :attribute ملفًا من نوع: :values.',
+    'min' => [
+        'array' => 'يجب أن يحتوي :attribute على :min عنصر على الأقل.',
+        'file' => 'يجب ألا يقل حجم :attribute عن :min كيلوبايت.',
+        'numeric' => 'يجب ألا تقل قيمة :attribute عن :min.',
+        'string' => 'يجب ألا يقل طول :attribute عن :min أحرف.',
+    ],
+    'numeric' => 'يجب أن يكون :attribute رقمًا.',
+    'regex' => 'صيغة :attribute غير صحيحة.',
+    'required' => 'حقل :attribute مطلوب.',
+    'required_if' => 'حقل :attribute مطلوب.',
+    'string' => 'يجب أن يكون :attribute نصًا.',
+    'unique' => 'قيمة :attribute مستخدمة من قبل.',
+    'uploaded' => 'فشل رفع :attribute.',
+
+    'attributes' => [
+        'email' => 'البريد الإلكتروني',
+        'password' => 'كلمة المرور',
+        'name' => 'الاسم',
+    ],
+];

@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Foundation\Inspiring;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Schedule;
 
-Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
-})->purpose('Display an inspiring quote');
+// التذكير اليومي باقتراب موعد الرد والتأخر.
+// يتطلب تشغيل المجدول: php artisan schedule:work (تطوير) أو مهمة cron/Task Scheduler تستدعي schedule:run كل دقيقة.
+Schedule::command('edocs:reminders')->dailyAt('07:30')->withoutOverlapping();
